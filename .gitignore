@@ -35,7 +35,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 nest.proyect/node_modules
-nest.proyect/node_dist
-nest.proyect/node_
+nest.proyect/dist
 
 /node_modules
