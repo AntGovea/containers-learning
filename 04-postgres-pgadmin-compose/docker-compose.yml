@@ -5,7 +5,8 @@ services:
     container_name: postgres_database
     image: postgres:15.1
     volumes:
-      - postgres-db:/var/lib/postgresql/data
+      # - postgres-db:/var/lib/postgresql/data #ejemplo de volumen externo
+      - ./postgres/volumes:/var/lib/postgresql/data #ejemplo de volumen local
     environment:
        - POSTGRES_PASSWORD=123456
 
@@ -14,6 +15,8 @@ services:
       - db
     container_name: pgadmin
     image: dpage/pgadmin4:6.17
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
     ports:
       - "8080:80"
     environment:
@@ -21,5 +24,8 @@ services:
       - PGADMIN_DEFAULT_EMAIL=superman@google.com
 
 
-volumes:
-  postgres-db:
+# volumes:
+#   postgres-db:
+#     external: true
+#   pgadmin:
+#     external: true
