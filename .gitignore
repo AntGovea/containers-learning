@@ -40,3 +40,5 @@ nest.proyect/dist
 /node_modules
 /04-postgres-pgadmin-compose/postgres/
 /04-postgres-pgadmin-compose/pgadmin/
+# /06-cron-ticker
+*/node_modules
