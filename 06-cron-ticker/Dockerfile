@@ -1,31 +1,32 @@
-# /app /usr /lib
-FROM --platform=$BUILDPLATFORM node:19-alpine3.16 
-# FROM - node:19-alpine3.16 
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
-# cd /app
+# Dependecias de desarrollo
+FROM node:19-alpine3.16 as deps
 WORKDIR /app
-
-# dest /app
 COPY package.json ./
-
-# instalar dependencias
-COPY . .
-
 RUN npm install
 
-
+# Build y Tests
+FROM node:19-alpine3.16 as builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 RUN npm run test
 
-# eliminar dependecias y directortios no necesarios en producción
-RUN rm -rf tests && rm -rf node_modules
+# Dependencias de produccion
+FROM  node:19-alpine3.16 as prod-deps
+WORKDIR /app
+COPY package.json ./
+RUN npm install --prod
 
-# Unicamente las dependencias de produccion
-RUN npm install --prod 
+# Ejecutar la aplicacion
+FROM  node:19-alpine3.16 as runner
+WORKDIR /app
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY  app.js  ./
+COPY  tasks ./tasks
 
-# Comando run de la imagen
+# comando run de la imagen
 CMD ["node","app.js"]
+
 
 
 

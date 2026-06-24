@@ -3,3 +3,4 @@ Dockerfile
 *.md
 .git
 .gitignore
+.readme
