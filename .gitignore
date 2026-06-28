@@ -46,4 +46,4 @@ nest.proyect/dist
 *.jpeg
 *.png
 *.gif
-
+*.env

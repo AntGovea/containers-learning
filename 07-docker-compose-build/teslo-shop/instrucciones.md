@@ -22,3 +22,9 @@ docker compose -f docker-compose.prod.yml up
 ´´´
 docker compose -f docker-compose.prod.yml build app
 ´´´
+
+# subir imagen de teslo-shop a dockerhub
+´´´
+docker push antgovea/teslo-shop:latest
+´´´
+
