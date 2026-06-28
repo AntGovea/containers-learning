@@ -1,6 +1,11 @@
-/nest.proyect# compiled output
+# compiled output
 /dist
 /node_modules
+
+postgres/
+
+.env
+
 
 # Logs
 logs
@@ -33,17 +38,9 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-nest.proyect/node_modules
-nest.proyect/dist
-
-/node_modules
-/04-postgres-pgadmin-compose/postgres/
-/04-postgres-pgadmin-compose/pgadmin/
-# /06-cron-ticker
-*/node_modules
-*.jpg
-*.jpeg
-*.png
-*.gif
-
+*/**.jpg
+*/*.jpeg
+*/*.png
+*/*.gif
+*/*.svg
+*/*.ico
